@@ -33,7 +33,7 @@ void UniqueNumber2(vector<int>vect)
     while((temp&1)==0)
     {
         pos++;
-        temp>>1;
+        temp=temp>>1;
     }
 
     int setA=0;
