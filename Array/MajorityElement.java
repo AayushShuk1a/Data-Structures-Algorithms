@@ -10,6 +10,7 @@ public class MajorityElement {
            {
             ele=arr[i];
             count=0; 
+            
            }
 
            if(ele==arr[i])
