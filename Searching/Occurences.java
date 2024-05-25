@@ -1,4 +1,4 @@
-public class firstAndLastOccurences {
+public class Occurences {
 
     static int firstOccurence(int arr[], int x) {
         int low = 0, high = arr.length - 1;
