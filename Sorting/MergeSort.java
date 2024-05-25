@@ -7,7 +7,7 @@ public class MergeSort {
         int rightSize = r - m;
 
         int[] L = new int[leftSize];
-        int[] R= new int[rightSize];
+        int[] R = new int[rightSize];
 
         for (int i = 0; i < leftSize; i++) {
             L[i] = arr[l + i];
@@ -22,13 +22,11 @@ public class MergeSort {
 
         while (i < leftSize && j < rightSize) {
 
-            if(L[i]<=R[j])
-            {
-                arr[k]=L[i];
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
                 i++;
-            }
-            else{
-                arr[k]=R[j];
+            } else {
+                arr[k] = R[j];
                 j++;
             }
 
@@ -36,48 +34,38 @@ public class MergeSort {
 
         }
 
-
-        while(i<leftSize)
-        {
-            arr[k]=L[i];
+        while (i < leftSize) {
+            arr[k] = L[i];
             k++;
             i++;
         }
 
-        while(j<rightSize)
-        {
-            arr[k]=R[j];
+        while (j < rightSize) {
+            arr[k] = R[j];
             j++;
             k++;
         }
 
     }
 
-
-    static void sort(int arr[],int l,int r)
-    {
-        if(r>l)
-        {
-            int m=l+(r-l)/2;
+    static void sort(int arr[], int l, int r) {
+        if (r > l) {
+            int m = l + (r - l) / 2;
             sort(arr, l, m);
-            sort(arr, m+1, r);
+            sort(arr, m + 1, r);
             merge(arr, l, m, r);
         }
     }
 
     public static void main(String[] args) {
-        int arr[]={23,12,34,22,55,11,45,76};
+        int arr[] = {23, 12, 34, 22, 55, 11, 45, 76};
 
-        sort(arr,0,arr.length-1);
+        sort(arr, 0, arr.length - 1);
 
-        for(int i:arr)
-        {
-            System.out.print(i+" ");
+        for (int i : arr) {
+            System.out.print(i + " ");
         }
 
     }
-
-
-   
 
 }
