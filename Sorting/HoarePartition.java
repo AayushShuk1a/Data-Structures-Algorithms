@@ -27,9 +27,18 @@ public class HoarePartition {
         }
     }
 
+    static void qSort(int arr[],int l,int h){
+        if(l<h)
+        {
+            int p=Partition(arr, l, h);
+            qSort(arr, l, p);
+            qSort(arr,p+1, h);
+        }
+    }
+
     public static void main(String[] args) {
-        int arr[]={5,3,8,4,2,7,1,10};
-        Partition(arr,0,arr.length-1);
+        int arr[]={8,4,7,9,3,10,5};
+        qSort(arr,0,arr.length-1);
 
         for(int i:arr)
         System.out.print(i+" ");

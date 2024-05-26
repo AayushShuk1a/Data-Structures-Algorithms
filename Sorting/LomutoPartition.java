@@ -8,17 +8,16 @@ public class LomutoPartition {
     
     }
 
-    static void partition(int arr[],int pivot,int l,int h)
+    static int partition(int arr[],int l,int h)
     {
         
-        swap(arr, h, pivot);
-        pivot=h;
+       int pivot=arr[h];
 
 
         int i=l-1;
         for(int j=l;j<=h-1;j++)
         {
-            if(arr[j]<arr[pivot])
+            if(arr[j]<pivot)
             {
                 i++;
                 swap(arr, i, j);
@@ -26,15 +25,26 @@ public class LomutoPartition {
         }
 
 
-        swap(arr,i+1,pivot);
+        swap(arr,i+1,h);
+        return i+1;
 
 
     }
 
+    static void qSort(int arr[],int l,int h)
+    {
+        if(l<h)
+        {
+            int p=partition(arr, l, h);
+            qSort(arr, l, p-1);
+            qSort(arr, p+1, h);
+        }
+    }
+
     public static void main(String[] args) {
-        int arr[]={10,80,30,90,40,50,70,60};
-        int pivot=3;
-        partition(arr, pivot, 0, arr.length-1);
+        int arr[]={10,80,30,90,40,50,70,60,22};
+        
+        qSort(arr,  0, arr.length-1);
 
        for(int i=0;i<arr.length;i++)
        {
