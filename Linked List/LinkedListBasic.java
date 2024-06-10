@@ -120,6 +120,24 @@ public class LinkedListBasic {
         curr.next=null;
     }
 
+    //Searching
+    static int Search(int x){
+        int pos=1;
+        Node curr=head;
+
+        while(curr!=null){
+            if(curr.data==x){
+                return pos;
+            }
+            else{
+                pos++;
+                curr=curr.next;
+            }
+        }
+
+        return -1;
+    }
+
 
     static void print(){
         Node curr=head;
