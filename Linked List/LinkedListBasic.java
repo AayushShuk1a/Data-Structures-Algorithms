@@ -13,6 +13,10 @@ public class LinkedListBasic {
 
     static Node head;
 
+
+
+    //INSERTION
+
     static void insertAtBegin(int data){
         Node temp=new Node(data);
         temp.next=head;
@@ -60,6 +64,63 @@ public class LinkedListBasic {
         curr.next=temp;
     }
 
+
+    //DELETION
+    static void deleteAtBegin(){
+        head=head.next;
+    }
+
+
+    static void deleteAtPosition(int pos){
+
+        if(head==null){
+            System.out.println("No value present");
+            return;
+
+        }
+
+        if (pos <= 0) {
+            System.out.println("Invalid position");
+            return;
+        }
+
+        if(pos==1){
+            head=head.next;
+            return;
+        }
+
+        Node curr=head;
+        for(int i=1;i<pos-1;i++){
+            curr=curr.next;
+            if(curr==null||curr.next==null){
+                System.out.println("Position Invalid");
+                return;
+            }
+        }
+
+        curr.next=curr.next.next;
+    }
+
+    static void deleteAtEnd(){
+        if(head==null){
+            System.out.println("No Value Present");
+            return;
+        }
+
+        if(head.next==null){
+            head=null;
+            return;
+        }
+
+        Node curr=head;
+
+        while(curr.next.next!=null){
+            curr=curr.next;
+        }
+        curr.next=null;
+    }
+
+
     static void print(){
         Node curr=head;
         while(curr!=null){
@@ -71,9 +132,15 @@ public class LinkedListBasic {
     public static void main(String[] args) {
     
         insertAtBegin(23);
-        insertAtEnd(25);
         insertAtBegin(22);
-        insertAtBetween(24, 3);
+        insertAtBegin(21);
+        insertAtBegin(20);
+        insertAtEnd(25);
+        
+        insertAtBetween(24, 5);
+        deleteAtBegin();
+        deleteAtEnd();
+        deleteAtPosition(3);
         print();
     }
     
