@@ -1,5 +1,3 @@
-
-
 public class Traversals {
 
     static void printSnake(int arr[][]){
