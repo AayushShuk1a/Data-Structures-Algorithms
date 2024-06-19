@@ -1,3 +1,4 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public class DetectCycleInDirectedGraph {
@@ -39,6 +40,36 @@ public class DetectCycleInDirectedGraph {
         return false;
     }
 
+    static boolean usingTopologicalSort(ArrayList<ArrayList<Integer>>adj,int v){
+        int[] in_degree=new int[v];
+        for(int i=0;i<v;i++){
+            for(int x:adj.get(i)){
+                in_degree[x]++;
+            }
+        }
+
+        ArrayDeque<Integer>q=new ArrayDeque<>();
+        for(int i=0;i<v;i++){
+            if(in_degree[i]==0){
+                q.offer(i);
+            }
+        }
+
+        int count=0;
+        while(!q.isEmpty()){
+            int u=q.poll();
+            for(int x:adj.get(u)){
+                in_degree[x]--;
+                if(in_degree[x]==0)
+                q.offer(x);
+            }
+            count++;
+        }
+        return (count==v)?false:true;
+    }
+
+
+
     public static void main(String[] args) {
         int V = 6; 
 		ArrayList<ArrayList<Integer> > adj = new ArrayList<ArrayList<Integer>>(V); 
@@ -54,6 +85,11 @@ public class DetectCycleInDirectedGraph {
         	addEdge(adj,5,3);
 		
 		if(DFS(adj,V)==true)
+    	    System.out.println("Cycle found");
+    	else
+    	    System.out.println("No cycle found");
+
+        if(usingTopologicalSort(adj,V)==true)
     	    System.out.println("Cycle found");
     	else
     	    System.out.println("No cycle found");
