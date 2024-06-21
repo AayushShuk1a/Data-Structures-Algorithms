@@ -27,7 +27,7 @@ public class VerticalSum {
     static void Vsum(Node root){
         TreeMap<Integer,Integer>mp=new TreeMap<Integer,Integer>();
         SumVertical(root, 0, mp);
-        for(Map.Entry sum:mp.entrySet()){
+        for(Map.Entry<Integer,Integer> sum:mp.entrySet()){
             System.out.print(sum.getValue()+" ");
         }
     }
